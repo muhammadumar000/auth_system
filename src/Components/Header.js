@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -48,6 +49,11 @@ export default function Header() {
   const logoutHandler = () => {
     logout();
   }
+
+  useEffect(() => {
+    setRefreshToken(localStorage.getItem("refreshToken"));
+    setAccessToken(localStorage.getItem("accessToken"));
+  })
 
   const logoutRender = () => {
     if(refreshToken && accessToken){
